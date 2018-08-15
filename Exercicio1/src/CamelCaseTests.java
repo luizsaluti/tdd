@@ -8,4 +8,10 @@ public class CamelCaseTests {
 	  String numero = "10";
 	  CamelCaseConverter.converterCamelCase(numero);
   }
+  
+  @Test
+  public void aceitaInicioNaoNumerico() {
+	  String palavraIniciadaPorLetra = "abc";
+	  CamelCaseConverter.converterCamelCase(palavraIniciadaPorLetra);
+  }
 }
