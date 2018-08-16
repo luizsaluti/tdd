@@ -15,7 +15,7 @@ public class CamelCaseConverter {
 	    String fraseMarcada = marcarFrase(fraseCamel);
 		palavras = Arrays.asList(fraseMarcada.split("\\|"));
 	    
-		return palavras.stream().map(palavra -> palavra.toLowerCase()).collect(Collectors.toList());//convertendo todas as palavras para caixa baixa
+		return acertaMaiusculas(palavras);
 	}
 	
 	protected static String marcarFrase(String frase) {
@@ -31,5 +31,21 @@ public class CamelCaseConverter {
 			sb.append(frase.charAt(i));
 		}
 		return sb.toString();
+	}
+	
+	protected static List<String> acertaMaiusculas(List<String> palavras){
+		return palavras.stream().map(palavra -> {
+			boolean todasMaiusculas = true;
+			String palavraCerta = palavra;
+			for(Character letra : palavra.toCharArray()) {
+				if(Character.isLowerCase(letra)) {
+					todasMaiusculas = false;
+				}
+			}
+			if(!todasMaiusculas) {
+				palavraCerta = palavra.toLowerCase();
+			}
+			return palavraCerta;
+		}).collect(Collectors.toList());//convertendo todas as palavras para caixa baixa
 	}
 }
