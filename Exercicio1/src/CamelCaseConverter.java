@@ -25,7 +25,7 @@ public class CamelCaseConverter {
 		String fraseMarcada = marcarFrase(fraseCamel);
 		palavras = Arrays.asList(fraseMarcada.split("\\|"));
 
-		return acertaMaiusculas(palavras);
+		return corrigeMaiusculas(palavras);
 	}
 
 	protected static String marcarFrase(String frase) {
@@ -35,8 +35,7 @@ public class CamelCaseConverter {
 			boolean letraAtualMaiuscula = Character.isUpperCase(frase.charAt(i));
 			boolean proximaLetraMinuscula = frase.length() > i + 1 && Character.isLowerCase(frase.charAt(i + 1));
 			boolean letraAnteriorMinuscula = i > 0 && Character.isLowerCase(frase.charAt(i - 1));
-			boolean inicioPalavraNumerica = Character.isDigit(frase.charAt(i))
-					&& (i > 0 && Character.isAlphabetic(frase.charAt(i - 1)));
+			boolean inicioPalavraNumerica = Character.isDigit(frase.charAt(i)) && (i > 0 && Character.isAlphabetic(frase.charAt(i - 1)));
 			if (letraAtualMaiuscula && (proximaLetraMinuscula || letraAnteriorMinuscula) || inicioPalavraNumerica) {
 				sb.append("|");
 			}
@@ -46,7 +45,7 @@ public class CamelCaseConverter {
 		return sb.toString();
 	}
 
-	protected static List<String> acertaMaiusculas(List<String> palavras) {
+	protected static List<String> corrigeMaiusculas(List<String> palavras) {
 		return palavras.stream().map(palavra -> {
 			boolean todasMaiusculas = true;
 			String palavraCerta = palavra;

@@ -46,7 +46,6 @@ public class CamelCaseTests {
 	  assertEquals("camel", frases.get(1));
 	  assertEquals("case", frases.get(2));
 	  
-	  
 	  String frase2 = "nomeComposto";
 	  List<String> frases2 = CamelCaseConverter.converterCamelCase(frase2);
 	  assertEquals("nome", frases2.get(0));
@@ -96,5 +95,13 @@ public class CamelCaseTests {
   public void confereFraseEspaco() {
 	  String frase = "nome Espaco";
 	  CamelCaseConverter.converterCamelCase(frase);
+  }
+  
+  @Test
+  public void confereSiglaAntes() {
+	  String frase = "SIGLAAntes";
+	  List<String> frases = CamelCaseConverter.converterCamelCase(frase);
+	  assertEquals("SIGLA", frases.get(0));
+	  assertEquals("antes", frases.get(1));
   }
 }
