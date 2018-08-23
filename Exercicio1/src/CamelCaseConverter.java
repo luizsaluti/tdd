@@ -48,16 +48,16 @@ public class CamelCaseConverter {
 	protected static List<String> corrigeMaiusculas(List<String> palavras) {
 		return palavras.stream().map(palavra -> {
 			boolean todasMaiusculas = true;
-			String palavraCerta = palavra;
+			String palavraCorrigida = palavra;
 			for (Character letra : palavra.toCharArray()) {
 				if (Character.isLowerCase(letra)) {
 					todasMaiusculas = false;
 				}
 			}
 			if (!todasMaiusculas) {
-				palavraCerta = palavra.toLowerCase();
+				palavraCorrigida = palavra.toLowerCase();
 			}
-			return palavraCerta;
+			return palavraCorrigida;
 		}).collect(Collectors.toList());// convertendo todas as palavras para caixa baixa
 	}
 }
