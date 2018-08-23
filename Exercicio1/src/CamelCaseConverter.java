@@ -25,9 +25,11 @@ public class CamelCaseConverter {
 			boolean letraAtualMaiuscula = Character.isUpperCase(frase.charAt(i)); 
 			boolean proximaLetraMinuscula = frase.length() > i + 1 && Character.isLowerCase(frase.charAt(i + 1));
 			boolean letraAnteriorMinuscula = i > 0 && Character.isLowerCase(frase.charAt(i - 1));
-			if (letraAtualMaiuscula && (proximaLetraMinuscula || letraAnteriorMinuscula)) {
+			boolean inicioPalavraNumerica = Character.isDigit(frase.charAt(i)) && (i > 0 && Character.isAlphabetic(frase.charAt(i - 1)));
+			if (letraAtualMaiuscula && (proximaLetraMinuscula || letraAnteriorMinuscula) || inicioPalavraNumerica) {
 				sb.append("|");
 			}
+			
 			sb.append(frase.charAt(i));
 		}
 		return sb.toString();
