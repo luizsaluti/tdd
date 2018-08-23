@@ -28,7 +28,7 @@ public class CamelCaseConverter {
 		return corrigeMaiusculas(palavras);
 	}
 
-	protected static String marcarFrase(String frase) {
+	protected static String marcarFrase(String frase) { 
 
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < frase.length(); i++) {
