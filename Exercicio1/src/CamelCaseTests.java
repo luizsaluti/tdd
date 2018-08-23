@@ -85,4 +85,16 @@ public class CamelCaseTests {
 	  assertEquals("10", frases.get(1));
 	  assertEquals("primeiros", frases.get(2));
   }
+  
+  @Test(expected = CaracterInvalidoException.class)
+  public void confereFraseCaracterEspecial() {
+	  String frase = "nome#Composto";
+	  CamelCaseConverter.converterCamelCase(frase);
+  }
+  
+  @Test(expected = CaracterInvalidoException.class)
+  public void confereFraseEspaco() {
+	  String frase = "nome Espaco";
+	  CamelCaseConverter.converterCamelCase(frase);
+  }
 }
