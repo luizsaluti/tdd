@@ -104,4 +104,15 @@ public class CamelCaseTests {
 	  assertEquals("SIGLA", frases.get(0));
 	  assertEquals("antes", frases.get(1));
   }
+  
+  @Test
+  public void conferePalavraVazia() {
+	  String frase = "";
+	  CamelCaseConverter.converterCamelCase(frase);
+  }
+  
+  @Test
+  public void conferePalavraNula() {
+	  CamelCaseConverter.converterCamelCase(null);
+  }
 }

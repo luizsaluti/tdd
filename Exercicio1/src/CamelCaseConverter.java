@@ -10,7 +10,7 @@ public class CamelCaseConverter {
 
 	public static List<String> converterCamelCase(String fraseCamel) {
 		List<String> palavras = null;
-		if (fraseCamel != null) {
+		if (fraseCamel != null && !fraseCamel.isEmpty()) {
 			if (fraseCamel.substring(0, 1).matches("[0-9]")) {
 				throw new InicioNumericoException("String não pode iniciar com número");
 			}
@@ -31,16 +31,19 @@ public class CamelCaseConverter {
 	protected static String marcarFrase(String frase) { 
 
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < frase.length(); i++) {
-			boolean letraAtualMaiuscula = Character.isUpperCase(frase.charAt(i));
-			boolean proximaLetraMinuscula = frase.length() > i + 1 && Character.isLowerCase(frase.charAt(i + 1));
-			boolean letraAnteriorMinuscula = i > 0 && Character.isLowerCase(frase.charAt(i - 1));
-			boolean inicioPalavraNumerica = Character.isDigit(frase.charAt(i)) && (i > 0 && Character.isAlphabetic(frase.charAt(i - 1)));
-			if (letraAtualMaiuscula && (proximaLetraMinuscula || letraAnteriorMinuscula) || inicioPalavraNumerica) {
-				sb.append("|");
-			}
+		if (frase != null) {
+			for (int i = 0; i < frase.length(); i++) {
+				boolean letraAtualMaiuscula = Character.isUpperCase(frase.charAt(i));
+				boolean proximaLetraMinuscula = frase.length() > i + 1 && Character.isLowerCase(frase.charAt(i + 1));
+				boolean letraAnteriorMinuscula = i > 0 && Character.isLowerCase(frase.charAt(i - 1));
+				boolean inicioPalavraNumerica = Character.isDigit(frase.charAt(i))
+						&& (i > 0 && Character.isAlphabetic(frase.charAt(i - 1)));
+				if (letraAtualMaiuscula && (proximaLetraMinuscula || letraAnteriorMinuscula) || inicioPalavraNumerica) {
+					sb.append("|");
+				}
 
-			sb.append(frase.charAt(i));
+				sb.append(frase.charAt(i));
+			}
 		}
 		return sb.toString();
 	}
