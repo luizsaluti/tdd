@@ -1,0 +1,43 @@
+----------------------------------------------------------------------
+#Código Original
+----------------------------------------------------------------------
+
+public void registraUsuario(String nome)
+			throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
+			UsuarioInexistenteException {
+		if (nome != null) {
+			if (!nome.isEmpty()) {
+				Usuario usuario = new Usuario(nome);
+				if (!_usuarios.contains(usuario)) {
+					_usuarios.add(usuario);
+				} else
+					throw new UsuarioJaRegistradoException("--->J‡ existe usu‡rio com o nome \""
+							+ nome + "\"! Use outro nome!");
+			} else
+				throw new UsuarioComNomeVazioException("--->N‹o pode registrar usuario com nome vazio!");
+		} else
+			throw new UsuarioInexistenteException("--->N‹o pode registrar usuario inexistente!");
+}
+
+----------------------------------------------------------------------
+#### Smells detectados
+----------------------------------------------------------------------
+
+#Negação Lógica
+if (nome != null) 
+if (!nome.isEmpty())
+if (!_usuarios.contains(usuario))
+
+#Aninhamento de If's
+if (nome != null) {
+			if (!nome.isEmpty()) {
+				Usuario usuario = new Usuario(nome);
+				if (!_usuarios.contains(usuario)) {
+				
+#Nomes inapropriados
+public void registraUsuario(String nome) --> nome do método e variável deveriam ser mais descritivos
+Usuario usuario = new Usuario(nome) --> nome da variavel usuario deveria indicar a intenção de melhor maneira
+
+----------------------------------------------------------------------				
+#### Ciclos Refatoração
+----------------------------------------------------------------------
