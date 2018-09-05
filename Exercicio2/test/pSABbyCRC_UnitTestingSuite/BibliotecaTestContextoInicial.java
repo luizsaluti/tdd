@@ -59,15 +59,15 @@ public class BibliotecaTestContextoInicial {
 			UsuarioInexistenteException { // T7--T9
 		// T7: Cria 1 usu‡rio novo
 		int tam = biblioteca.sizeUsuarios();
-		biblioteca.registraUsuario("Jose");
+		biblioteca.adicionaUsuario("Jose");
 		assertEquals(tam + 1, biblioteca.sizeUsuarios());
 
 		// T8: Cria segundo usuario novo
-		biblioteca.registraUsuario("Joao");
+		biblioteca.adicionaUsuario("Joao");
 		assertEquals(tam + 2, biblioteca.sizeUsuarios());
 
 		// T9: Cria terceiro usuario novo
-		biblioteca.registraUsuario("Joaquim");
+		biblioteca.adicionaUsuario("Joaquim");
 		assertEquals(tam + 3, biblioteca.sizeUsuarios());
 	}
 
@@ -76,8 +76,8 @@ public class BibliotecaTestContextoInicial {
 			throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
 			UsuarioInexistenteException {
 		// T10
-		biblioteca.registraUsuario("Joaquim");
-		biblioteca.registraUsuario("Joaquim");
+		biblioteca.adicionaUsuario("Joaquim");
+		biblioteca.adicionaUsuario("Joaquim");
 	}
 
 	@Test(expected = UsuarioComNomeVazioException.class)
@@ -85,7 +85,7 @@ public class BibliotecaTestContextoInicial {
 			throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
 			UsuarioInexistenteException {
 		// T11
-		biblioteca.registraUsuario("");
+		biblioteca.adicionaUsuario("");
 	}
 
 	@Test(expected = UsuarioInexistenteException.class)
@@ -93,7 +93,7 @@ public class BibliotecaTestContextoInicial {
 			throws UsuarioJaRegistradoException, UsuarioComNomeVazioException,
 			UsuarioInexistenteException {
 		// T12
-		biblioteca.registraUsuario(null);
+		biblioteca.adicionaUsuario(null);
 	}
 
 	private static Biblioteca biblioteca;

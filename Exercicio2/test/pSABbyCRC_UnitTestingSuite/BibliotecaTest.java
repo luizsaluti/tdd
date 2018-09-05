@@ -24,11 +24,11 @@ public class BibliotecaTest {
 		livro4 = new Livro("Using CRC Cards", "Nancy Wilkinson");
 		biblioteca.adicionaLivroCatalogo(livro4);
 
-		biblioteca.registraUsuario("Jose");
+		biblioteca.adicionaUsuario("Jose");
 		usuario1 = biblioteca.buscaUsuarioPorNome("Jose");
-		biblioteca.registraUsuario("Joao");
+		biblioteca.adicionaUsuario("Joao");
 		usuario2 = biblioteca.buscaUsuarioPorNome("Joao");
-		biblioteca.registraUsuario("Joaquim");
+		biblioteca.adicionaUsuario("Joaquim");
 		usuario3 = biblioteca.buscaUsuarioPorNome("Joaquim");
 	}
 
